@@ -10,8 +10,8 @@ In `main.py`, update the path to a video or photo and enable the `gpu` attribute
 
 ```
 if __name__ == "__main__":
-    analyzer = Analyzer(video_path='./samples/chicago.mp4', gpu=False, record_output=False)
-    # analyzer = Analyzer(image_path='./samples/nyc.jpg', gpu=False, record_output=False)
+    # analyzer = Analyzer(video_path='./samples/chicago.mp4', gpu=False, save_output=True)
+    analyzer = Analyzer(image_path='./samples/nyc.jpg', gpu=False, save_output=True)
     analyzer.visualize()
 ```
 
