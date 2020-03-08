@@ -9,6 +9,7 @@ A simple Python script to use a pretrained Darknet network and YOLOv3 to detect 
 * Python 3
 * [PyTorch](https://pytorch.org/get-started/locally/)
 * Then `pip install -r requirements.txt`
+* Finally, download weights for the network: `bash model/download_weights.sh`
 
 ## Usage
 
