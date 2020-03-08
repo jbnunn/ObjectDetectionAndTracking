@@ -206,6 +206,6 @@ class Analyzer():
 
 
 if __name__ == "__main__":
-    # analyzer = Analyzer(video_path='./samples/chicago.mp4', gpu=False, save_output=True)
-    analyzer = Analyzer(image_path='./samples/nyc.jpg', gpu=False, save_output=True)
+    analyzer = Analyzer(video_path='./samples/chicago.mp4', gpu=False, save_output=True)
+    #analyzer = Analyzer(image_path='./samples/nyc.jpg', gpu=False, save_output=True)
     analyzer.visualize()

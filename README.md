@@ -4,6 +4,12 @@ A simple Python script to use a pretrained Darknet network and YOLOv3 to detect 
 
 ![Annotated Sample](./sample.gif)
 
+## Requirements
+
+* Python 3
+* [PyTorch](https://pytorch.org/get-started/locally/)
+* Then `pip install -r requirements.txt`
+
 ## Usage
 
 In `main.py`, update the path to a video or photo and enable the `gpu` attribute if you're running on GPU.
