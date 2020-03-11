@@ -4,6 +4,8 @@ A simple Python script to use a pretrained Darknet network and YOLOv3 to detect 
 
 ![Annotated Sample](./sample.gif)
 
+Video source: [https://www.videezy.com/free-video/traffic](https://www.videezy.com/free-video/traffic)
+
 ## Requirements
 
 * Python 3
