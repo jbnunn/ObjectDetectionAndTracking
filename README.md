@@ -1,6 +1,6 @@
 # Object Detection and Tracking
 
-A simple Python script to use a pretrained Darknet network and YOLOv3 to detect objects in a scene and track them across frames.
+A simple Python script that uses a pretrained Darknet network and YOLOv3 to detect objects in a scene and track them across frames. Part of my Twitch series on building computer vision components of self-driving machines.
 
 ![Annotated Sample](./sample.gif)
 
