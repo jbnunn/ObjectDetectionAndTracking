@@ -11,7 +11,7 @@ Video source: [https://www.videezy.com/free-video/traffic](https://www.videezy.c
 * Python 3
 * [PyTorch](https://pytorch.org/get-started/locally/)
 * Then `pip install -r requirements.txt`
-* Finally, download weights for the network: `bash model/download_weights.sh`
+* Finally, download weights for the network: `cd model && bash model/download_weights.sh`
 
 ## Usage
 
