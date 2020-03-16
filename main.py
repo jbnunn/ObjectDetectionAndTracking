@@ -5,6 +5,7 @@ from torchvision import datasets, transforms
 from torch.autograd import Variable
 from model.darknet import *
 
+import argparse
 import cv2
 import os
 import torch
@@ -23,6 +24,7 @@ class Analyzer():
         self.model.load_weights('model/yolov3.weights')
 
         if gpu:
+            print("Using GPU")
             self.Tensor = torch.cuda.FloatTensor
             self.model.cuda()
         else:
@@ -125,6 +127,8 @@ class Analyzer():
                         cv2.rectangle(frame, (x1, y1-35), (x1+len(cls)*19+80, y1), color, -1)
                         cv2.putText(frame, cls + "-" + str(int(obj_id)), (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 3)
 
+                total_time = time.time()-start_time
+
                 cv2.imshow('Stream', frame)
                 
                 if self.save_output:
@@ -134,7 +138,6 @@ class Analyzer():
                 if ch == 27 or ch == ord('q'):
                     break
 
-            total_time = time.time()-start_time
             print(frames, "frames", total_time/frames, "s/frame")
             cv2.destroyAllWindows()
             
@@ -188,13 +191,14 @@ class Analyzer():
                         cv2.rectangle(frame, (x1, y1-35), (x1+len(cls)*19+80, y1), color, -1)
                         cv2.putText(frame, cls + "-" + str(int(obj_id)), (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 3)
 
+                total_time = time.time()-start_time
+            
                 cv2.imshow('Stream', frame)
 
                 ch = 0xFF & cv2.waitKey(0)
                 if ch == 27 or ch == ord('q'):
                     break
 
-            total_time = time.time()-start_time
             print(f"Total_time: {total_time}s")
             cv2.destroyAllWindows()
             
@@ -204,8 +208,22 @@ class Analyzer():
 
             sys.exit()
 
-
 if __name__ == "__main__":
-    #analyzer = Analyzer(video_path='./samples/chicago.mp4', gpu=False, save_output=True)
-    analyzer = Analyzer(image_path='./samples/nyc.jpg', gpu=False, save_output=True)
+
+    parser = argparse.ArgumentParser(description='Annotate an image or video')
+    parser.add_argument('--video', help='Path to MP4 video file', type=str)
+    parser.add_argument('--image', help='path to image file', type=str)
+    parser.add_argument('--gpu', help='Run the network on a GPU', action='store_true')
+    parser.add_argument('--save', help='Save results', action='store_true')
+
+    args = parser.parse_args()
+
+    if args.video:
+        analyzer = Analyzer(video_path=args.video, gpu=args.gpu, save_output=args.save)
+    elif args.image:
+        analyzer = Analyzer(image_path=args.image, gpu=args.gpu, save_output=args.save)
+    else:
+        parser.print_help()
+        sys.exit()
+
     analyzer.visualize()

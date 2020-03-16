@@ -15,18 +15,26 @@ Video source: [https://www.videezy.com/free-video/traffic](https://www.videezy.c
 
 ## Usage
 
-In `main.py`, update the path to a video or photo and enable the `gpu` attribute if you're running on GPU.
+Run `main.py` with the following command line arguments,
 
 ```
-if __name__ == "__main__":
-    # analyzer = Analyzer(video_path='./samples/chicago.mp4', gpu=False, save_output=True)
-    analyzer = Analyzer(image_path='./samples/nyc.jpg', gpu=False, save_output=True)
-    analyzer.visualize()
+usage: main.py [-h] [--video VIDEO] [--image IMAGE] [--gpu] [--save]
+
+Annotate an image or video
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --video VIDEO  Path to MP4 video file
+  --image IMAGE  path to image file
+  --gpu          Run the network on a GPU
+  --save         Save results
 ```
 
-Run the script with
+e.g.,
 
-    python main.py
+    python main.py --image samples/nyc.jpg --gpu --save
+
+Press "q" to close the annotated window and exit the running program.
 
 ## Resources
 
